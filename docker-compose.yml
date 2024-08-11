@@ -1,0 +1,70 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: sportdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+
+  team-service:
+    build: ./team-service
+    ports:
+      - "8081:8081"
+    environment:
+      - MONGODB_HOST=mongodb
+      - MONGODB_PORT=27017
+    depends_on:
+      - mongodb
+
+  player-service:
+    build: ./player-service
+    ports:
+      - "8082:8082"
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    depends_on:
+      - postgres
+
+  match-service:
+    build: ./match-service
+    ports:
+      - "8083:8083"
+    environment:
+      - MONGODB_HOST=mongodb
+      - MONGODB_PORT=27017
+    depends_on:
+      - mongodb
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      - TEAM_SERVICE_HOST=team-service
+      - TEAM_SERVICE_PORT=8081
+      - PLAYER_SERVICE_HOST=player-service
+      - PLAYER_SERVICE_PORT=8082
+      - MATCH_SERVICE_HOST=match-service
+      - MATCH_SERVICE_PORT=8083
+      - SPRING_PROFILES_ACTIVE=default
+    depends_on:
+      - team-service
+      - player-service
+      - match-service
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge
