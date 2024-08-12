@@ -50,6 +50,8 @@ Onderstaand diagram geeft een overzicht van de architectuur van het project, inc
 
 Bekijk hiervoor het document 'Postman requests' in de folder 'documentatie'.
 
+https://github.com/JonasBaelus/FantasyFootball/blob/main/documentatie/Postman%20requests.pdf
+
 ### Belangrijkste endpoint
 
 'http://localhost:8080/players/create-and-update-team (POST)' omdat hierbij eerst een nieuwe speler wordt aangemaakt,
