@@ -4,6 +4,8 @@ services:
     image: mongo
     ports:
       - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
 
   postgres:
     image: postgres
@@ -13,6 +15,8 @@ services:
       POSTGRES_PASSWORD: password
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
   team-service:
     build: ./team-service
@@ -64,6 +68,10 @@ services:
       - match-service
     networks:
       - default
+
+volumes:
+  mongodb_data:
+  postgres_data:
 
 networks:
   default:
