@@ -19,7 +19,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   team-service:
-    build: ./team-service
+    image: jonasbaelus/team-service:latest
     ports:
       - "8081:8081"
     environment:
@@ -29,7 +29,7 @@ services:
       - mongodb
 
   player-service:
-    build: ./player-service
+    image: jonasbaelus/player-service:latest
     ports:
       - "8082:8082"
     environment:
@@ -41,7 +41,7 @@ services:
       - postgres
 
   match-service:
-    build: ./match-service
+    image: jonasbaelus/match-service:latest
     ports:
       - "8083:8083"
     environment:
@@ -51,7 +51,7 @@ services:
       - mongodb
 
   api-gateway:
-    build: ./api-gateway
+    image: jonasbaelus/api-gateway:latest
     ports:
       - "8080:8080"
     environment:
