@@ -19,7 +19,7 @@ De belangrijkste componenten van het project zijn:
 
 Onderstaand diagram geeft een overzicht van de architectuur van het project, inclusief de microservices en de API Gateway:
 
-![Architectuurschema](./documentatie/Fantasy Football API Diagram.png)
+![Architectuurschema](./documentatie/FantasyFootballAPIDiagram.png)
 
 ## Microservices en Componenten
 
@@ -67,7 +67,11 @@ waarna er een request gedaan wordt naar de team-service om het team up te daten.
 
 ## Werkende Testen
 
-Bekijk hiervoor het document 'Unit tests results' in de folder 'documentatie'.
+![TestsPlayer](./documentatie/TestsPlayer.png)
+
+![TestsMatch](./documentatie/TestsMatch.png)
+
+![TestsTeam](./documentatie/TestsTeam.png)
 
 ## Uitbreidingen en Verbeteringen
 
